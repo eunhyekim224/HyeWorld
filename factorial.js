@@ -19,10 +19,7 @@ function factorial(n) {
             numbers.push(n-i);
         }
 
-        return numbers.reduce(function(accumulator, currentValue) {
-            return accumulator * currentValue;
-        });
-
+        return numbers.reduce((accumulator, currentValue) => accumulator * currentValue)
     }
 }
 
