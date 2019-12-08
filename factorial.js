@@ -13,13 +13,13 @@ function factorial(n) {
 
     } else {
 
-        var numbersArray = []
+        var numbers = []
 
         for (var i = 0; i < n; i++) { 
-            numbersArray.push(n-i);
+            numbers.push(n-i);
         }
 
-        return numbersArray.reduce(function multiply(accumulator, currentValue) {
+        return numbers.reduce(function(accumulator, currentValue) {
             return accumulator * currentValue;
         });
 
