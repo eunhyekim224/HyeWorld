@@ -30,16 +30,13 @@ var isSquare = function(n) {
     
     var squareRootIsAnInteger = Number.isInteger(squareRoot);
 
-    var squareOfSquareRootIsN = (Math.pow(squareRoot, 2) === n);
+    var isEqualToSquareOfSquareRoot = (Math.pow(squareRoot, 2) === n);
 
-    if (squareRootIsAnInteger && squareOfSquareRootIsN) {
-      return true;
-    } else {
-      return false; 
-    }
-    
+    return (squareRootIsAnInteger && isEqualToSquareOfSquareRoot); 
+
 }
 
+//test
 console.log(isSquare(4));
 console.log(isSquare(3));
 console.log(isSquare(25));
