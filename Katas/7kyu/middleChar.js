@@ -19,10 +19,13 @@
 
 function getMiddle(s) {
 
-  if (s.length % 2 === 0) {
-      return s.charAt(s.length/2 - 1) + s.charAt((s.length/2));  
+  var hasEvenLength = (s.length % 2 === 0)
+  var halfLength = s.length/2;
+
+  if (hasEvenLength) {
+      return s.charAt(halfLength - 1) + s.charAt(halfLength);  
   } else {
-      return s.charAt(s.length/2);
+      return s.charAt(halfLength);
   }
     
 }
