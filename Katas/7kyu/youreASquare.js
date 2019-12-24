@@ -19,10 +19,31 @@
 // isSquare(26) returns  false
 
 
+// var isSquare = function(n) {
+//     var squareRoot = Math.sqrt(n);
+//     return (Number.isInteger(squareRoot) && Math.pow(squareRoot, 2) === n) 
+//   }
+
 var isSquare = function(n) {
+
     var squareRoot = Math.sqrt(n);
-    return (Number.isInteger(squareRoot) && Math.pow(squareRoot, 2) === n) 
-  }
+    
+    var squareRootIsAnInteger = Number.isInteger(squareRoot);
+
+    var squareOfSquareRootIsN = (Math.pow(squareRoot, 2) === n);
+
+    if (squareRootIsAnInteger && squareOfSquareRootIsN) {
+      return true;
+    } else {
+      return false; 
+    }
+    
+}
+
+console.log(isSquare(4));
+console.log(isSquare(3));
+console.log(isSquare(25));
+console.log(isSquare(-1));
 
 
 //notes
@@ -36,8 +57,8 @@ var isSquare = function(n) {
 
 //other solutions
 
-function isSquare(n) {
-    return Math.sqrt(n) % 1 === 0;
-  }
+// function isSquare(n) {
+//     return Math.sqrt(n) % 1 === 0;
+//   }
 
   //% 1 -> how many times a number can be divided by 1; Remainder operator % - returns the remainder; will give 0 if it's an integer and remainder decimals if not  
