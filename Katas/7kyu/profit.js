@@ -13,8 +13,8 @@
 
 function minMax(arr){
     
-    var min = Math.min.apply(null, arr);
-    var max = Math.max.apply(null, arr);
+    var min = Math.min(...arr)
+    var max = Math.max(...arr)
 
     return new Array(min, max);
   }
