@@ -13,14 +13,9 @@ function XO(str) {
     var matchX = str.match(/x/gi);
     var matchO = str.match(/o/gi);
   
-    if (!matchX && !matchO) {
-        return true;
-    } else if (matchX && matchO && matchX.length === matchO.length) {    
-            return true;
-        } else {
-            return false;
-        }
-}    
+    return (matchX && matchX.length) === (matchO && matchO.length);
+
+}
 
 
 
