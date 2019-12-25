@@ -10,27 +10,59 @@
 
 // DNAStrand ("GTAT") // return "CATA" 
 
+//first attempt
 
-function DNAStrand(dna){
+// function DNAStrand(dna){
+
+//     var complementaryDna = [];
+    
+//     for (var i=0; i < dna.length; i++) {
+//     var letter = dna[i];
+    
+//         if (letter === 'A' || letter === 'G') {
+//             letter = letter.replace('A', 'T');
+//             letter = letter.replace('G', 'C');
+//         } else {
+//             letter = letter.replace('T', 'A');
+//             letter = letter.replace('C', 'G');
+//         };
+    
+//         complementaryDna.push(letter);
+//     }
+    
+//     return complementaryDna.join('');
+//     }
+
+//updated 
+
+function DNAStrand(dna) {
 
     var complementaryDna = [];
     
     for (var i=0; i < dna.length; i++) {
-    var letter = dna[i];
+        var base = dna[i];
+
+        switch (base) {
+            case 'A':
+                complementaryBase = base.replace('A', 'T');
+                break;
+            case 'G':
+                complementaryBase = base.replace('G', 'C');
+                break;
+            case 'T':
+                complementaryBase = base.replace('T', 'A');
+                break;
+            case 'C':
+                complementaryBase = base.replace('C', 'G');
+        }
     
-        if (letter === 'A' || letter === 'G') {
-            letter = letter.replace('A', 'T');
-            letter = letter.replace('G', 'C');
-        } else {
-            letter = letter.replace('T', 'A');
-            letter = letter.replace('C', 'G');
-        };
-    
-        complementaryDna.push(letter);
+        complementaryDna.push(complementaryBase);
     }
-    
+
     return complementaryDna.join('');
-    }
+
+}
+
     
     //test
     console.log(DNAStrand("ATTGC"));
