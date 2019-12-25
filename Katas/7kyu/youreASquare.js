@@ -26,15 +26,16 @@
 
 var isSquare = function(n) {
 
-    var squareRoot = Math.sqrt(n);
-    
-    var squareRootIsAnInteger = Number.isInteger(squareRoot);
-
-    var isEqualToSquareOfSquareRoot = (Math.pow(squareRoot, 2) === n);
-
-    return (squareRootIsAnInteger && isEqualToSquareOfSquareRoot); 
-
+    return (isInteger(n) && isSquareOfInteger(n)); 
 }
+
+isInteger = n => Number.isInteger(n);
+
+isSquareOfInteger = n => {
+  var squareRoot = Math.sqrt(n);
+  return Math.pow(squareRoot, 2) === n;
+}
+
 
 //test
 console.log(isSquare(4));
