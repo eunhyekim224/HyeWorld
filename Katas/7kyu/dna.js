@@ -44,16 +44,16 @@ function DNAStrand(dna) {
 
         switch (base) {
             case 'A':
-                complementaryBase = base.replace('A', 'T');
+                complementaryBase = 'T';
                 break;
             case 'G':
-                complementaryBase = base.replace('G', 'C');
+                complementaryBase = 'C';
                 break;
             case 'T':
-                complementaryBase = base.replace('T', 'A');
+                complementaryBase = 'A'
                 break;
             case 'C':
-                complementaryBase = base.replace('C', 'G');
+                complementaryBase = 'G'
         }
     
         complementaryDna.push(complementaryBase);
@@ -64,24 +64,23 @@ function DNAStrand(dna) {
 }
 
     
-    //test
-    console.log(DNAStrand("ATTGC"));
+//test 
+console.log(DNAStrand("ATTGC"));
+
+//notes
+//for each letter of the string, replace A with T and G with C, T with A and C with G
+//has to go through the string just once for each letter 
+
+//other solutions
+function DNAStrand(dna) {
+    return dna.replace(/./g, function(c) {
+        return DNAStrand.pairs[c]
+        })
+    }
     
-    //notes
-    //for each letter of the string, replace A with T and G with C, T with A and C with G
-    //has to go through the string just once for each letter 
-    
-    //other solutions
-    function DNAStrand(dna) {
-        return dna.replace(/./g, function(c) {
-            return DNAStrand.pairs[c]
-          })
-        }
-        
-        DNAStrand.pairs = {
-          A: 'T',
-          T: 'A',
-          C: 'G',
-          G: 'C',
-        }
-    
+    DNAStrand.pairs = {
+        A: 'T',
+        T: 'A',
+        C: 'G',
+        G: 'C',
+    }
