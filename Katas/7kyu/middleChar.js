@@ -19,16 +19,19 @@
 
 function getMiddle(s) {
 
-  var hasEvenLength = (s.length % 2 === 0)
-  var halfLength = s.length/2;
-
   if (hasEvenLength) {
-      return s.charAt(halfLength - 1) + s.charAt(halfLength);  
+      return pairOfMiddleChar(s);
   } else {
-      return s.charAt(halfLength);
+      return singleMiddleChar(s);
   }
     
 }
+
+var middlePosition = s.length/2;
+
+hasEvenLength = s => s.length % 2 === 0; 
+pairOfMiddleChar = s => s.charAt(middlePosition - 1) + s.charAt(middlePosition);
+singleMiddleChar = s => s.charAt(middlePosition);
 
 //test
 console.log(getMiddle('dog'));
