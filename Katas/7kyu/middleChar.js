@@ -18,20 +18,20 @@
 // The middle character(s) of the word represented as a string.
 
 function getMiddle(s) {
-
-  if (hasEvenLength) {
+  if (hasEvenLength(s)) {
       return pairOfMiddleChar(s);
   } else {
       return singleMiddleChar(s);
-  }
-    
+  } 
 }
 
-var middlePosition = s.length/2;
-
 hasEvenLength = s => s.length % 2 === 0; 
-pairOfMiddleChar = s => s.charAt(middlePosition - 1) + s.charAt(middlePosition);
-singleMiddleChar = s => s.charAt(middlePosition);
+
+middlePosition = s => s.length/2;
+
+pairOfMiddleChar = s => s.charAt(middlePosition(s) - 1) + s.charAt(middlePosition(s));
+singleMiddleChar = s => s.charAt(middlePosition(s));
+
 
 //test
 console.log(getMiddle('dog'));
