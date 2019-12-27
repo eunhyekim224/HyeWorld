@@ -10,12 +10,15 @@
 
 function XO(str) {
 
-    var matchX = str.match(/x/gi);
-    var matchO = str.match(/o/gi);
-  
-    return (matchX && matchX.length) === (matchO && matchO.length);
+  return (amountOfO(str) === amountOfX(str));
 
 }
+
+hasX = str => str.match(/x/gi) || [];
+hasO = str => str.match(/o/gi) || [];
+
+amountOfX = str => hasX(str).length;
+amountOfO = str => hasO(str).length;
 
 
 
@@ -26,6 +29,12 @@ console.log(XO("XOoX")); //true
 console.log(XO("XXxOo"))// false 
 console.log(XO("xxxm")); // false;
 
+
+// if (!hasX(str) && !hasO(str)) {
+//   return true;
+//  } else {
+//    return amountOfX(str) === amountOfO(str)
+//  }
 
 //notes
 //try using regex
