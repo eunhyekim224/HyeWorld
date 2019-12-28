@@ -10,15 +10,20 @@
 
 function XO(str) {
 
-  return (amountOfO(str) === amountOfX(str));
+  amountOfO = amountOfChar(str, regexO)
+  amountOfX = amountOfChar(str, regexX)
+
+  return (amountOfO === amountOfX);
 
 }
 
-hasX = str => str.match(/x/gi) || [];
-hasO = str => str.match(/o/gi) || [];
+var regexX = /x/gi;
+var regexO = /o/gi;
 
-amountOfX = str => hasX(str).length;
-amountOfO = str => hasO(str).length;
+amountOfChar = (str, regex) => {
+  var matchChar = str.match(regex) || [];
+  return matchChar.length;
+}
 
 
 
