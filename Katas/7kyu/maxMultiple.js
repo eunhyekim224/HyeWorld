@@ -12,19 +12,28 @@
 // It's guaranteed that a divisor is Found .
 
 function maxMultiple(divisor, bound) {
-    var arrayOfMultiples = [];
-        for (var N = 0; N <= bound; N++) {
-            if (isDivisibleByDivisor(N, divisor)) {
-                arrayOfMultiples.push(N);
-            }
-        }
-    return largestIntegerInAnArray(arrayOfMultiples);
+
+    var arrayOfMultiples = getArrayOfMultiples(divisor, bound);
+  
+    var largestInteger = largestIntegerInAnArray(arrayOfMultiples);
+
+    return largestInteger;
+
 }
 
 isDivisibleByDivisor = (N, divisor) => N % divisor === 0; 
 
 largestIntegerInAnArray = arr => Math.max(...arr);
 
+getArrayOfMultiples = (divisor, bound) => {
+    var arrayOfMultiples = [];
+    for (var N = 0; N <= bound; N++) {
+        if (isDivisibleByDivisor(N, divisor)) {
+            arrayOfMultiples.push(N);
+        }
+    }
+    return arrayOfMultiples;
+}
 
 //test
 
@@ -34,6 +43,6 @@ console.log(maxMultiple(37, 200)) //185
 
 //other solutions
 
-function maxMultiple(divisor, bound){
-    return bound-bound%divisor
-  }
+// function maxMultiple(divisor, bound){
+//     return bound-bound%divisor
+//   }
