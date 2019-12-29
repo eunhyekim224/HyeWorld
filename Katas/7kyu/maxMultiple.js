@@ -13,26 +13,24 @@
 
 function maxMultiple(divisor, bound) {
 
-    var arrayOfMultiples = getArrayOfMultiples(divisor, bound);
+    var multiplesWithinBound = getMultiplesWithinBound(divisor, bound);
   
-    var largestInteger = largestIntegerInAnArray(arrayOfMultiples);
-
-    return largestInteger;
+    return largestIntegerIn(multiplesWithinBound);
 
 }
 
 isDivisibleByDivisor = (N, divisor) => N % divisor === 0; 
 
-largestIntegerInAnArray = arr => Math.max(...arr);
+largestIntegerIn = arr => Math.max(...arr);
 
-getArrayOfMultiples = (divisor, bound) => {
-    var arrayOfMultiples = [];
+getMultiplesWithinBound = (divisor, bound) => {
+    var multiplesWithinBound = [];
     for (var N = 0; N <= bound; N++) {
         if (isDivisibleByDivisor(N, divisor)) {
-            arrayOfMultiples.push(N);
+            multiplesWithinBound.push(N);
         }
     }
-    return arrayOfMultiples;
+    return multiplesWithinBound;
 }
 
 //test
