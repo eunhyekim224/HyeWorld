@@ -18,9 +18,9 @@ function XO(str) {
 }
 
 amountOfChar = (str, char) => {
-  var regexChar = new RegExp(char, 'gi')
-  var matchChar = str.match(regexChar) || [];
-  return matchChar.length;
+  var charRegex = new RegExp(char, 'gi')
+  var matchChars = str.match(charRegex) || [];
+  return matchChars.length;
 }
 
 console.log(XO("ooxx")); //true
