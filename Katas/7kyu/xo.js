@@ -10,22 +10,18 @@
 
 function XO(str) {
 
-  amountOfO = amountOfChar(str, regexO)
-  amountOfX = amountOfChar(str, regexX)
+  amountOfO = amountOfChar(str,'o');
+  amountOfX = amountOfChar(str,'x');
 
   return (amountOfO === amountOfX);
 
 }
 
-var regexX = /x/gi;
-var regexO = /o/gi;
-
-amountOfChar = (str, regex) => {
-  var matchChar = str.match(regex) || [];
+amountOfChar = (str, char) => {
+  var regexChar = new RegExp(char, 'gi')
+  var matchChar = str.match(regexChar) || [];
   return matchChar.length;
 }
-
-
 
 console.log(XO("ooxx")); //true
 console.log(XO("oooxx")); //false
