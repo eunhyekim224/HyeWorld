@@ -15,13 +15,13 @@ function maxMultiple(divisor, bound) {
 
     var multiplesWithinBound = getMultiplesWithinBound(divisor, bound);
   
-    return largestIntegerIn(multiplesWithinBound);
+    return largestOf(multiplesWithinBound);
 
 }
 
 isDivisibleByDivisor = (N, divisor) => N % divisor === 0; 
 
-largestIntegerIn = arr => Math.max(...arr);
+largestOf = arr => Math.max(...arr);
 
 getMultiplesWithinBound = (divisor, bound) => {
     var multiplesWithinBound = [];
