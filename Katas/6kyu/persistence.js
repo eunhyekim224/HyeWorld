@@ -15,7 +15,7 @@ function persistence(num) {
 
     var numberOfMultiplications = 0; 
 
-    while (lengthOfDigits(num) > 1) { 
+    while (numberOfDigits(num) > 1) { 
         var num = productOfDigits(num); 
         numberOfMultiplications++;
     };
@@ -24,11 +24,11 @@ function persistence(num) {
 
 }
 
-lengthOfDigits = num => num.toString().length;
+numberOfDigits = num => num.toString().length;
 
 productOfDigits = num => {
     var digits = num.toString().split(''); 
-    var multiplier = (accumulator, currentValue) => accumulator * currentValue;
+    var multiplier = (runningProduct, currentValue) => runningProduct * currentValue;
     return digits.reduce(multiplier);
 }
 
@@ -44,15 +44,15 @@ console.log(persistence('4'));
 //a single digit 
 
 
-// var multiplier = (accumulator, currentValue) => accumulator * currentValue;
+// var multiplier = (runningProduct, currentValue) => runningProduct * currentValue;
 // var multipliedDigits = digits.reduce(multiplier);
 
 
-//var singleDigit = lengthOfDigits(num) === 1 
+//var singleDigit = numberOfDigits(num) === 1 
 //while (!singleDigit).... 
 //or
-//var singleDigit = lengthOfDigits(num) > 1;
-//while (singleDigit).... 
+//var moreThanOneDigit = numberOfDigits(num) > 1;
+//while (moreThanOneDigit).... 
 //timed out. Why? because !singleDigit can be anything? infinite loop?
 
 
