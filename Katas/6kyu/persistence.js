@@ -33,7 +33,7 @@ productOfDigits = num => {
 }
 
 console.log(persistence('39'));
-console.log(persistence('4'));
+console.log(persistence('4')); 
 
 //notes
 
@@ -54,6 +54,9 @@ console.log(persistence('4'));
 //var moreThanOneDigit = numberOfDigits(num) > 1;
 //while (moreThanOneDigit).... 
 //timed out. Why? because !singleDigit can be anything? infinite loop?
+
+//bc numberOfDigits(num) only gets executed once - 23 will never be a single digit unless it gets executed again after productOfDigits(num), loop goes on forever
+//make singleDigit a function  
 
 
 
