@@ -13,27 +13,30 @@
 
 // Pad with spaces so each line is the same length. The last line having only stars, no spaces.
 
-function christmasTree(height) {
-    var treeLines = treeLine(height);
-    return joinedAndTrimmed(treeLines);
+function christmasTree(height, matter, padding) {
+    return joinedAndTrimmed(treeLines(height, matter, padding));
 }
 
-spaces = n => {
-    var space = ' ';
-    return space.repeat(n);
-};
 
-stars = n => {
-    var star = '*';
-    return star.repeat(n);
-};
+repeatedChar = (char, n) => {
+    return char.repeat(n);
+}
 
-treeLine = height => {
+treeLines = (height, matter, padding) => {
     var treeLines = [];
-    for (var i=1, j=1; j<=((2*height)-1); i++, j+=2) {
-        var treeLine = spaces(height-i) + stars(j) + spaces(height-i);
+    var maxMatterCount = (2 * height) - 1;
+    
+    for (var lineCount = 1, matterCount = 1; matterCount <= maxMatterCount; lineCount++, matterCount+=2) {
+
+        var paddingCount = height - lineCount;
+
+        var treePadding = repeatedChar(padding, paddingCount);
+        var treeMatter = repeatedChar(matter, matterCount);
+
+        var treeLine = treePadding + treeMatter + treePadding;
         treeLines.push(treeLine);
     }
+
     return treeLines;
 }
 
@@ -44,9 +47,9 @@ joinedAndTrimmed = arr => {
 
 //test
 
-console.log(christmasTree(1))//"*"
-console.log(christmasTree(2))//" * \n***");
-console.log(christmasTree(3))//"  *  \n *** \n*****");
+console.log(christmasTree(5, '*', ' '));
+console.log(christmasTree(2, '&', '^'));
+console.log(christmasTree(3, '$', '!'));
 
 
 
