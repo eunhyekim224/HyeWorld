@@ -25,8 +25,8 @@ repeatedChar = (char, n) => {
 treeLines = (height, matter, padding) => {
     var treeLines = [];
     var maxMatterCount = (2 * height) - 1;
-    
-    for (var lineCount = 1, matterCount = 1; matterCount <= maxMatterCount; lineCount++, matterCount+=2) {
+
+    for (var lineCount = 1, matterCount = 1; matterCount <= maxMatterCount; lineCount++, matterCount=(lineCount*2)-1) {
 
         var paddingCount = height - lineCount;
 
@@ -39,6 +39,7 @@ treeLines = (height, matter, padding) => {
 
     return treeLines;
 }
+
 
 joinedAndTrimmed = arr => {
     return arr.join('\n').trimRight();
