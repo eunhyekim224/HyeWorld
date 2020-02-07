@@ -2,9 +2,9 @@
 
 // christmasTree(5) || christmas_tree(height) should return:
 
-//     *    
-//    ***   
-//   *****  
+//     *       
+//    ***       
+//   ***** 
 //  ******* 
 // *********
 // Height passed is always an integer between 0 and 100.
@@ -13,33 +13,41 @@
 
 // Pad with spaces so each line is the same length. The last line having only stars, no spaces.
 
-function christmasTree(height, matter, padding) {
-    return joinedAndTrimmed(treeLines(height, matter, padding));
+function christmasTree(height, matterType, paddingType) {
+    return makeTree(makeTreeLines(height, matterType), paddingType)
 }
 
+makeTree = (lines, paddingType) => {
+    let linesWithPadding = [];
+
+    for (let i=0; i<lines.length; i++) {
+        let widthOfTree = lines[lines.length-1].length;
+        let paddingCount = (widthOfTree - lines[i].length)/2;
+        let padding = repeatedChar(paddingType, paddingCount);
+        let lineWithPadding = padding + lines[i] + padding;
+        linesWithPadding.push(lineWithPadding);
+    }
+    return joinedAndTrimmed(linesWithPadding);
+}
+
+makeTreeLines = (height, matterType) => {
+    let treeLines = [];
+    let widthOfTree = (2 * height) - 1;  
+    
+    if (height === 0) {
+        treeLines.push('');
+    } else {
+        for (let matterCount=1; matterCount<widthOfTree; matterCount+=2) {
+            let treeLine = repeatedChar(matterType, matterCount);
+            treeLines.push(treeLine);
+        }
+    } 
+    return treeLines;
+}
 
 repeatedChar = (char, n) => {
     return char.repeat(n);
 }
-
-treeLines = (height, matter, padding) => {
-    var treeLines = [];
-    var maxMatterCount = (2 * height) - 1;
-
-    for (var lineCount = 1, matterCount = 1; matterCount <= maxMatterCount; lineCount++, matterCount=(lineCount*2)-1) {
-
-        var paddingCount = height - lineCount;
-
-        var treePadding = repeatedChar(padding, paddingCount);
-        var treeMatter = repeatedChar(matter, matterCount);
-
-        var treeLine = treePadding + treeMatter + treePadding;
-        treeLines.push(treeLine);
-    }
-
-    return treeLines;
-}
-
 
 joinedAndTrimmed = arr => {
     return arr.join('\n').trimRight();
