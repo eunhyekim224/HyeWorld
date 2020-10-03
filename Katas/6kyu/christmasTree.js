@@ -17,7 +17,7 @@ function christmasTree(height, matterType, paddingType) {
     return makeTree(makeTreeLines(height, matterType), paddingType)
 }
 
-makeTree = (lines, paddingType) => {
+const makeTree = (lines, paddingType) => {
     let linesWithPadding = [];
 
     for (let i=0; i<lines.length; i++) {
@@ -30,7 +30,7 @@ makeTree = (lines, paddingType) => {
     return joinedAndTrimmed(linesWithPadding);
 }
 
-makeTreeLines = (height, matterType) => {
+const makeTreeLines = (height, matterType) => {
     let treeLines = [];
     let widthOfTree = (2 * height) - 1;  
     
@@ -45,11 +45,11 @@ makeTreeLines = (height, matterType) => {
     return treeLines;
 }
 
-repeatedChar = (char, n) => {
+const repeatedChar = (char, n) => {
     return char.repeat(n);
 }
 
-joinedAndTrimmed = arr => {
+const joinedAndTrimmed = arr => {
     return arr.join('\n').trimRight();
 }
 
