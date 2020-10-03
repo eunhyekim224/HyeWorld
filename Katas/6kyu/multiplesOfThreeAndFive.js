@@ -8,26 +8,16 @@
 
 function solution(number) {
   if (number >= 0) {
-    const multiplesOfThreeOrFive = [];
+    let sum = 0;
     for (let i = 0; i < number; i++) {
       const multipleOfThree = i % 3 === 0;
       const multipleOfFive = i % 5 === 0;
       if (multipleOfThree || multipleOfFive) {
-        multiplesOfThreeOrFive.push(i);
+        sum += i;
       }
     }
-    if (multiplesOfThreeOrFive.length > 0) {
-      return multiplesOfThreeOrFive.reduce((a, b) => a + b);
-    } else {
-      return 0;
-    }
+    return sum;
   } else {
     return 0;
   }
 }
-
-/**
- * multiples of 3: x % 3 === 0
- * multiples of 5: y % 5 === 0
- *
- */
