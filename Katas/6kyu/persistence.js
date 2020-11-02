@@ -24,9 +24,9 @@ function persistence(num) {
 
 }
 
-numberOfDigits = num => num.toString().length;
+const numberOfDigits = num => num.toString().length;
 
-productOfDigits = num => {
+const productOfDigits = num => {
     var digits = num.toString().split(''); 
     var multiplier = (runningProduct, currentValue) => runningProduct * currentValue;
     return digits.reduce(multiplier);
