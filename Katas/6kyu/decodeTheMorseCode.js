@@ -22,27 +22,40 @@ All the test strings would contain valid Morse code, so you may skip checking fo
 
 */
 
-const decodeMorse = function(morseCode){
-  const words = morseCode.split('   ');
-  console.log('words in morse', words)
-  const morseWordsAndCharacters = words.map(word => {
+const decodeMorse = function (morseCode) {
+  const words = morseCode.split("   ");
+  const morseWordsAndCharacters = words.map((word) => {
     return {
       word,
-      characters: null
-    }
+      characters: null,
+    };
   });
-  
-  console.log('words and chars in morse', morseWordsAndCharacters);
-  
-  for (let i=0; i<morseWordsAndCharacters.length; i++) {
-    const characters = morseWordsAndCharacters[i].word.split(' ');
+
+  for (let i = 0; i < morseWordsAndCharacters.length; i++) {
+    const characters = morseWordsAndCharacters[i].word.split(" ");
     morseWordsAndCharacters[i].characters = characters;
   }
-  
-  console.log('words and chars in morse 2', morseWordsAndCharacters);
-}
 
-console.log(decodeMorse('.... . -.--   .--- ..- -.. .'))
+  console.log("words and chars in morse 2", morseWordsAndCharacters);
+
+  const decodedWordsArr = morseWordsAndCharacters.map((obj) => {
+    const morseWord = obj.word;
+    const morseCharacters = obj.characters;
+
+    const decodedCharacters = morseCharacters.map((character) => {
+      return MORSE_CODE[character];
+    });
+
+    const decodedWord = decodedCharacters.join("");
+
+    console.log("decodedWord", decodedWord);
+    return decodedWord;
+  });
+
+  return decodedWordsArr.join(" ");
+};
+
+console.log(decodeMorse(".... . -.--   .--- ..- -.. ."));
 
 /**
 input = morse code
