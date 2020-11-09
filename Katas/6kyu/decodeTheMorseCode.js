@@ -22,38 +22,28 @@ All the test strings would contain valid Morse code, so you may skip checking fo
 
 */
 
-const decodeMorse = function (morseCode) {
-  const words = morseCode.split("   ");
-  const morseWordsAndCharacters = words.map((word) => {
-    return {
-      word,
-      characters: null,
-    };
+function decodeMorse(morseCode) {
+  const morseWords = morseCode.split("   ");
+  const morseCharacters = morseWords.map((word) => {
+    return word.split(" ");
   });
 
-  for (let i = 0; i < morseWordsAndCharacters.length; i++) {
-    const characters = morseWordsAndCharacters[i].word.split(" ");
-    morseWordsAndCharacters[i].characters = characters;
-  }
-
-  console.log("words and chars in morse 2", morseWordsAndCharacters);
-
-  const decodedWordsArr = morseWordsAndCharacters.map((obj) => {
-    const morseWord = obj.word;
-    const morseCharacters = obj.characters;
-
-    const decodedCharacters = morseCharacters.map((character) => {
+  const decodedWordsArr = morseCharacters.map((characters) => {
+    const decodedCharacters = characters.map((character) => {
       return MORSE_CODE[character];
     });
-
-    const decodedWord = decodedCharacters.join("");
-
-    console.log("decodedWord", decodedWord);
-    return decodedWord;
+    return decodedCharacters.join(" ");
   });
-
   return decodedWordsArr.join(" ");
 };
+
+function decodeCharacters() {
+ 
+}
+
+function decodeWords() {
+  
+}
 
 console.log(decodeMorse(".... . -.--   .--- ..- -.. ."));
 
