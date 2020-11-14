@@ -10,26 +10,28 @@ Note: You may not engage in multiple transactions at the same time (i.e., you mu
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function (prices) {
-  // let buyDay = 1;
-  // let maxDiff = 0;
-  let totalProfit = 0;
-  for (let i = 0; i < prices.length; i++) {
-    let maxProfit = 0;
-    for (let j = i; j < prices.length - i; j++) {
-      console.log("j:", j);
-      console.log("i2:", i);
-      console.log("prices[i+j]:", prices[i + j]);
-      console.log("prices[i]2:", prices[i]);
-      let potentialProfit = prices[i + j] - prices[i];
-      console.log("potentialProfit:", potentialProfit);
-      if (potentialProfit > maxProfit) {
-        maxProfit = potentialProfit;
-      }
-    }
-    console.log("maxProfit:", maxProfit);
-    totalProfit += maxProfit;
-  }
-
-  return totalProfit;
+var maxProfit = function(prices) {
+  return calculateProfit(prices, 0);    
 };
+
+var calculateProfit = function(prices, currentDay) {
+  if (currentDay >= prices.length) {
+      return 0;
+  }
+  let totalMaxProfit = 0;
+  for (let start=currentDay; start<prices.length; start++) {
+      let maxProfit = 0;
+      for (let i=start+1; i<prices.length; i++) {
+          if (prices[start] < prices[i]) {
+              let profit = calculateProfit(prices, i+1) + prices[i] - prices[start];
+              if (profit > maxProfit) {
+                  maxProfit = profit; 
+              }
+          }
+      }
+      if (maxProfit > totalMaxProfit) {
+          totalMaxProfit = maxProfit; 
+      }
+  }
+  return totalMaxProfit; 
+}
