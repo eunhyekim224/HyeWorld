@@ -15,20 +15,19 @@ var duplicateZeros = function (arr) {
   for (let i = 0; i < originalLength; i++) {
     if (arr[i] === 0) {
       arr = shiftItemsToRight(arr, i + 1, originalLength);
-      console.log('arr1', arr)
-      arr[i + 1] = 0;
-      i++
+      if (i < originalLength - 1) {
+        arr[i + 1] = 0;
+      }
+      i++;
     }
-  }
-
-  if (arr[arr.length - 1] === 0) {
-   arr[arr.length] = 0;
   }
 };
 
 function shiftItemsToRight(arr, index, originalLength) {
-  for (let i = originalLength; i >= index; i--) {
+  for (let i = originalLength - 1; i >= index; i--) {
+    if (i < originalLength - 1) {
       arr[i + 1] = arr[i];
+    }
   }
   return arr;
 }
