@@ -13,14 +13,17 @@ The order of elements can be changed. It doesn't matter what you leave beyond th
  */
 var removeElement = function (nums, val) {
   let i = 0;
-  for (let j = 0; j < nums.length; j++) {
-    if (nums[j] !== val)  {
-      nums[i] = nums[j];
-      i++;
+    let n = nums.length;
+    while (i < n) {
+        if (nums[i] == val) {
+            nums[i] = nums[n - 1];
+            n--;
+        } else {
+            i++;
+        }
     }
-  }
 
-  return i;
+  return n;
 };
 
 
