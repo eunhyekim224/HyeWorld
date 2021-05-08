@@ -7,17 +7,23 @@
  */
 
 function solution(number) {
-  if (number >= 0) {
-    let sum = 0;
-    for (let i = 0; i < number; i++) {
-      const multipleOfThree = i % 3 === 0;
-      const multipleOfFive = i % 5 === 0;
-      if (multipleOfThree || multipleOfFive) {
-        sum += i;
-      }
-    }
-    return sum;
-  } else {
-    return 0;
-  }
+  return multiplesOfThreeAndFive(number).reduce((prev, curr) => prev + curr);
 }
+
+function multiplesOfThreeAndFive(number) {
+  const numberDividedByFive = (number - 1) / 5;
+  const numberDividedByThree = (number - 1) / 3;
+
+  let multiples = [];
+  for (let i = 0; i <= numberDividedByThree; i++) {
+    multiples.push(i * 3);
+  }
+  for (let j = 0; j <= numberDividedByFive; j++) {
+    if (!multiples.includes(j * 5)) {
+      multiples.push(j * 5);
+    }
+  }
+  console.log(multiples)
+  return multiples;
+}
+
