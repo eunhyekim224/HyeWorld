@@ -19,67 +19,28 @@ N is an integer within the range [1..100,000];
 each element of array A is an integer within the range [−1,000,000..1,000,000].
  */
 
-//This is a failed solution
-function solution(A) {
-  let sortedA = A.sort((a, b) => a - b);
-  let biggest = Math.max(...sortedA);
 
-  let missingSmallestInt = 1000000;
+//Correct solution 
+function solution(arr) {
 
-  if (A.every((item) => item < 0)) {
-    return 1;
-  } else {
-    let sortedPositiveA = sortedA.filter((item) => item > 0);
-    console.log("positive", sortedPositiveA);
+  var map = {};
+  var min = 1;
 
-    for (let i = 0; i < sortedPositiveA.length; i++) {
-      if (sortedPositiveA[i] + 1 === sortedPositiveA[i + 1]) {
-        missingSmallestInt = biggest + 1;
-      } else {
-        //check if the number exists already
-
-        let smallestInt = sortedPositiveA[i] + 1;
-        console.log('smallestInt', smallestInt);
-        console.log('missing ', missingSmallestInt)
-
-        if (
-          !A.includes(smallestInt) &&
-          smallestInt < missingSmallestInt &&
-          missingSmallestInt !== 0
-        ) {
-          missingSmallestInt = smallestInt;
-        }
-      }
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      //checking if the number is a positive number
+      map[arr[i]] = true;
+      //mark each number from the set as 'true' if it exists 
     }
   }
 
-  return missingSmallestInt;
-}
+  if (!map[min]) return 1;
+  //if there is no '1' in the positive set, then the answer should be 1
 
-console.log(solution([-3,-2,1,4]));
+  while (map[min]) min++;
+  //while the number exists in 'map', increase 'min' until it increases to a number that doesn't exist in 'arr'
 
-//Correct solution 
-function solution(A) {
-    
-  var map = {};
-  var min = 1;
-  
-  for(var i=0; i<A.length; i++) {
-      if(A[i] > 0) {
-//checking if the number is a positive number
-          map[A[i]] = true;
-//mark each number from the set as 'true' if it exists 
-      }
-  }
-  
-  if(!map[min]) return 1;
-//if there is no '1' in the positive set, then the answer should be 1
-  
-  while(map[min]) min++;
-//while the number exists in 'map', increase 'min' until it increases to a number that doesn't exist in 'A'
-  
   return min;
-
 }
 
 /**
@@ -94,7 +55,7 @@ function solution(A) {
   if (smallest === biggest) {
     missingSmallestInt = biggest + 1;
   } else {
-    
+
   }
 
   for (let i = 0; i < biggest; i++) {
@@ -132,7 +93,6 @@ function solution(A) {
   }
 
   return missingSmallestInt;
-
 
 
 
@@ -205,4 +165,45 @@ function solution(A) {
 
   return missingSmallestInt;
 }
+
+
+5)
+function solution(A) {
+  let sortedA = A.sort((a, b) => a - b);
+  let biggest = Math.max(...sortedA);
+
+  let missingSmallestInt = 1000000;
+
+  if (A.every((item) => item < 0)) {
+    return 1;
+  } else {
+    let sortedPositiveA = sortedA.filter((item) => item > 0);
+    console.log("positive", sortedPositiveA);
+
+    for (let i = 0; i < sortedPositiveA.length; i++) {
+      if (sortedPositiveA[i] + 1 === sortedPositiveA[i + 1]) {
+        missingSmallestInt = biggest + 1;
+      } else {
+        //check if the number exists already
+
+        let smallestInt = sortedPositiveA[i] + 1;
+        console.log('smallestInt', smallestInt);
+        console.log('missing ', missingSmallestInt)
+
+        if (
+          !A.includes(smallestInt) &&
+          smallestInt < missingSmallestInt &&
+          missingSmallestInt !== 0
+        ) {
+          missingSmallestInt = smallestInt;
+        }
+      }
+    }
+  }
+
+  return missingSmallestInt;
+}
+
+console.log(solution([-3,-2,1,4]));
+
  */
