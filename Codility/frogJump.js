@@ -30,10 +30,7 @@ function solution(X, Y, D) {
   let jumpDist = D;
   let destination = Y;
 
-  console.log(destination - startPos);
-
   let minJumps = (destination - startPos) / jumpDist;
-  console.log(minJumps);
 
   return Math.ceil(minJumps);
 }
